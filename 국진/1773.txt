@@ -1,0 +1,54 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class PokjukAlgo {
+	public static int pokjukCalc(int n, int c, int[] t){
+		int pokjukTime[] = new int[c+1];
+		int count = 0;
+		for (int i = 0; i < pokjukTime.length; i++) {
+			pokjukTime[i] += i;
+			
+			
+		}
+		for (int i = 0; i < pokjukTime.length; i++) {
+			for (int j = 0; j < t.length; j++) {
+				if(pokjukTime[i] % t[j] == 0){
+					pokjukTime[i] = 0;
+				}
+			}
+			
+		}
+		for (int i = 0; i < pokjukTime.length; i++) {
+			
+			    if(pokjukTime[i] == 0 ){
+			    	count += 1;
+			    }
+		}
+		
+		count = count - 1;
+		
+		
+		
+		return count;
+	}
+	
+	
+	public static void main(String[] args) {
+		try{
+		
+		Scanner sc = new Scanner(new File("pokjuk_input.txt"));
+		int n = sc.nextInt();
+		int c = sc.nextInt();
+		int t[] = new int[n];
+		for (int i = 0; i < t.length; i++) {
+			t[i] = sc.nextInt();
+		}
+		System.out.println(pokjukCalc(n, c, t));
+		  
+		}catch (FileNotFoundException e) {
+			// TODO: handle exception
+			System.out.println("파일이없음");
+		}
+}
+}
