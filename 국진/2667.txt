@@ -1,0 +1,63 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class CookAlgo {
+	public static int[] cookScore(int [][] m){
+		int n[] = new int[5];
+		int max[] = new int[2];
+		
+		for (int i = 0; i < m.length; i++) {
+			for (int j = 0; j < m[i].length; j++) {
+				  n[i] += m[i][j];
+				
+			}
+		}
+		
+		for (int i = 0; i < n.length; i++) {
+			if(max[1] < n[i]){
+				max[1] = n[i];
+				max[0] = i+1;
+			}
+		}
+		
+		return max;
+	}
+	
+	
+	public static void main(String[] args) {
+		try{
+		
+		Scanner sc = new Scanner(new File("cook_score_input.txt"));
+	//	int T = sc.nextInt();
+	
+		int m  = 5;
+		int n = 4;
+		int w[][];
+		int max[];
+		//m = sc.nextInt();
+		w = new int[m][n];
+		for(int i = 0 ; i < m; i++){
+		//if(i > 7 ){
+			
+			for (int j = 0; j < n; j++) {
+				w[i][j]= sc.nextInt();
+				
+				//System.out.println(w[i][j]);
+			}
+			
+			
+			
+		}
+		max = cookScore(w);
+		for (int i = 0; i < max.length; i++) {
+			System.out.print(max[i]+" ");
+		}
+		
+		  
+		}catch (FileNotFoundException e) {
+			// TODO: handle exception
+			System.out.println("파일이없음");
+		}
+}
+}
